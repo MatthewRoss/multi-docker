@@ -6,7 +6,7 @@ before_install:
   - docker build -t mross04/react-test -f ./client/Dockerfile.dev ./client
   
 script:
-  - docker run stephengrider/react-test npm test -- --coverage
+  - docker run -e CI=true mross04/react-test npm test
   
 after_success:
   - docker build -t mross04/multi-client ./client
